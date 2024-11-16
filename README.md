@@ -48,15 +48,15 @@ If users go to an undefined path, they encounter an error page that redirects th
 
 ![](gifs/errorhandling.gif)
 
-### View Trip Details
-
-Users can see a detailed view of their trip which includes: title, start/end date, description, transportation, estimated travel time, travel cost, destinations (title, type, location, cost), total expenses, and documents.
-
-[gif goes here]
-
 ### Add Destinations to Trip
 
 Users can choose from a list of destinations, such as restaurants and places, to assign to a trip.
+
+![](gifs/adddestinationstotrip.gif)
+
+### View Trip Details
+
+Users can see a detailed view of their trip which includes: title, start/end date, description, transportation, estimated travel time, travel cost, destinations (title, type, location, cost), total expenses, and documents.
 
 [gif goes here]
 
