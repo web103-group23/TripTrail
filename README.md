@@ -26,9 +26,27 @@ Backend:
 
 ### View All Trips ✅
 
-Users can view all scheduled trips. They can create, update, and delete trips.
+Users can view all scheduled trips.
 
 ![viewalltrips gif](gifs/viewalltrips.gif)
+
+### Plan Trip ✅
+
+Users can plan their trip.
+
+[gif goes here]
+
+### Edit & Delete Trip ✅
+
+Users can edit or delete trips.
+
+[gif goes here]
+
+### Error Handling ✅
+
+If users go to an undefined path, they encounter an error page that redirects them to the home page.
+
+[gif goes here]
 
 ### View Trip Details
 
