@@ -40,7 +40,7 @@ Users can plan their trip.
 
 Users can edit or delete trips.
 
-![](gifs/plantrip.gif)
+![](gifs/editdeletetrip.gif)
 
 ### Error Handling ✅
 
