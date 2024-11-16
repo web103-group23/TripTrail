@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import ReadTrips from './pages/ReadTrips'
 import CreateTrip from './pages/CreateTrip'
 import EditTrip from './pages/EditTrip'
@@ -71,6 +72,10 @@ const App = () => {
     {
       path:"/destinations/add/:destination_id",
       element: <AddToTrip data={trips}/>
+    },
+    {
+      path:"*",
+      element: <NotFound />
     }
   ]);
 
