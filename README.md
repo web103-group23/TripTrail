@@ -28,25 +28,25 @@ Backend:
 
 Users can view all scheduled trips.
 
-![viewalltrips gif](gifs/viewalltrips.gif)
+![](gifs/viewalltrips.gif)
 
 ### Plan Trip ✅
 
 Users can plan their trip.
 
-[gif goes here]
+![](gifs/plantrip.gif)
 
 ### Edit & Delete Trip ✅
 
 Users can edit or delete trips.
 
-[gif goes here]
+![](gifs/plantrip.gif)
 
 ### Error Handling ✅
 
 If users go to an undefined path, they encounter an error page that redirects them to the home page.
 
-[gif goes here]
+![](gifs/errorhandling.gif)
 
 ### View Trip Details
 
