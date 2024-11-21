@@ -92,26 +92,21 @@
 
 .form-table .inputCustomSize1{
     width:200px;
-    height:10px;
     margin-right: -20px;
 }
 
 .form-table1 .inputCustomSize1{
     width:200px;
-    height:10px;
     margin-right: 60px;
 }
 
 .form-table .inputCustomSize2{
     width:650px;
-    height:10px;
     margin-left: -30px;
-
 }
 
 .form-table1 .inputCustomSize2{
     width:70px;
-    height:10px;
     margin-right: 10px;
     margin-left: -50px;
 }
@@ -180,7 +175,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    gap: 10px; 
+    gap: 10px;
 }
 
 input[type="radio"] {
@@ -194,7 +189,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked, input[type= 'radio']:focus{
-    background-color:  rgb(231, 130, 15);;  
+    background-color:  rgb(231, 130, 15);;
     border:rgb(231, 130, 15);
 }
 

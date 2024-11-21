@@ -1,0 +1,26 @@
+[
+    {
+        "destination": "Venice, Florence, & Rome",
+        "description": "We've picked three iconic cities at the pulse of Italy's vibrant culture, both past and present. Venice brings romance to the forefront, with sprawling Baroque palaces and meandering, gondola-dotted canals. The Renaissance is tangible in Florence, where the presence of the world's greatest artists can still be felt. The people, the food, the way of life—experience what Italy is all about as you make your way from one city to the next.",
+        "city": "Venice",
+        "country": "Italy",
+        "img_url": "https://tinyurl.com/5e7kcc5a",
+        "flag_img_url": "https://tinyurl.com/2p8k3c8a"
+    },
+    {
+        "destination": "Egypt & Nile River Cruise",
+        "description": "Descend into a world of ancient wonders to discover the lands behind the legends. Walk past towering stone icons, through avenues of sphinxes, and into royal valleys amid the desert sands. Then, cruise down the Nile and anchor at remote islands and beside the Theban Hills. End your adventure in Cairo, where historic mosques mingle with today's modern bustle.",
+        "city": "Cairo",
+        "country": "Egypt",
+        "img_url": "https://tinyurl.com/yesanwy8",
+        "flag_img_url": "https://tinyurl.com/2p8k3c8a"
+    },
+    {
+        "destination": "Ecuador & Galápagos Islands",
+        "description": "Ecuador puts new meaning behind the saying, \"good things come in small packages.\" In terms of flora, fauna, and opportunities for viewing unique local wildlife, this South American country runs the gamut. Journey to Quito for a taste of Ecuadorean culture and Spanish colonial history. Then, island hop through the Galápagos, where you'll move from mangrove swamps to lava flows to sunny shorelines, encountering scores of exotic creatures along the way.",
+        "city": "Quito",
+        "country": "Ecuador",
+        "img_url": "https://tinyurl.com/3f4nzn7z",
+        "flag_img_url": "https://tinyurl.com/2p8k3c8a"
+    }
+]
