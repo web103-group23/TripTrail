@@ -14,7 +14,7 @@ const Card = (props) =>  {
           <p className="description">{props.description}</p>
           <button className="priceBtn">{props.total_cost}</button>
           <button className="daysBtn">{props.num_days + " days"}</button>
-          <Link to={'trip/get/'+ props.id}><button className="seeMoreBtn">See More</button></Link>
+          <Link to={'/trip/get/'+ props.id}><button className="seeMoreBtn">See More</button></Link>
         </div>
       </div>
   );

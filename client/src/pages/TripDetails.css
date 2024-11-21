@@ -1,3 +1,13 @@
+.TripDetails {
+  max-width: 100%;
+  align-content: center;
+  border-radius: 10px;
+  margin: 20px;
+  height:fit-content;
+  margin-top: 150px;
+  background-color: rgba(255, 253, 253, 0.13);
+}
+
 
 .flex-container {
     display: flex;
@@ -28,12 +38,12 @@
     background-size: cover;
   }
 
-  .addActivityBtn{
+  .addDocumentBtn{
     color: rgb(255, 255, 255);
     background-color: rgba(38, 163, 217, 0.491);
   }
 
-  .addActivityBtn:hover{
+  .addDocumentBtn:hover{
     color: rgb(255, 255, 255);
     background-color: rgba(29, 122, 162, 0.491);
   }

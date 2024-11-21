@@ -80,7 +80,7 @@ const createDestinationsTable = async () => {
 
 const createDocumentsTable = async () => {
     const createDocumentsTableQuery = `
-        CREATE TABLE IF NOT EXISTS activities (
+        CREATE TABLE IF NOT EXISTS documents (
             id serial PRIMARY KEY,
             trip_id int NOT NULL,
             document varchar(100) NOT NULL,
@@ -156,7 +156,7 @@ const createTripsUsersTable = async () => {
 createTripsTable()
 seedTripsTable()
 createDestinationsTable()
-createActivitiesTable()
+createDocumentsTable()
 createTripsDestinationsTable()
 createUsersTable()
 createTripsUsersTable()

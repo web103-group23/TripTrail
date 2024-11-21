@@ -19,9 +19,19 @@ const CreateDocument = () => {
     }
     
     const createDocument = async (event) => {
-        event.preventDefault();
-
-
+        event.preventDefault()
+      
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(document)
+        
+        }
+      
+        fetch('/api/documents/' + trip_id, options)
+        window.location.href = '/trips'
     }
 
     return (
