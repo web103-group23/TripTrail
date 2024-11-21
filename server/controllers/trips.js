@@ -58,8 +58,8 @@ const deleteTrip = async (req, res) => {
     const id = parseInt(req.params.id)
   
     try {
-      const activity_deletion = await pool.query(
-        'DELETE FROM activities WHERE trip_id = $1',
+      const document_deletion = await pool.query(
+        'DELETE FROM documents WHERE trip_id = $1',
         [id]
       )
   

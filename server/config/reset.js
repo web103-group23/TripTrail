@@ -78,22 +78,21 @@ const createDestinationsTable = async () => {
     }
 }
 
-const createActivitiesTable = async () => {
-    const createActivitiesTableQuery = `
+const createDocumentsTable = async () => {
+    const createDocumentsTableQuery = `
         CREATE TABLE IF NOT EXISTS activities (
             id serial PRIMARY KEY,
             trip_id int NOT NULL,
-            activity varchar(100) NOT NULL,
-            num_votes integer DEFAULT 0,
+            document varchar(100) NOT NULL,
             FOREIGN KEY(trip_id) REFERENCES trips(id)
         );
     `
     try {
-        const res = await pool.query(createActivitiesTableQuery)
-        console.log('🎉 activities table created successfully')
+        const res = await pool.query(createDocumentsTableQuery)
+        console.log('🎉 documents table created successfully')
     }
     catch (err) {
-        console.error('⚠️ error creating activities table', err)
+        console.error('⚠️ error creating documents table', err)
     }
 }
 

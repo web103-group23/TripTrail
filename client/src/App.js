@@ -10,7 +10,7 @@ import CreateDestination from './pages/CreateDestination';
 import ReadDestinations from './pages/ReadDestinations'
 import TripDetails from './pages/TripDetails'
 import { Link } from 'react-router-dom'
-import CreateActivity from './pages/CreateActivity';
+import CreateDocument from './pages/CreateDocument';
 import AddToTrip from './pages/AddToTrip';
 import Logo from './assets/Logo.png';
 import email_icon from './assets/email_icon.png';
@@ -66,8 +66,8 @@ const App = () => {
       element: <CreateDestination />
     },
     {
-      path:"/activity/create/:trip_id",
-      element: <CreateActivity />
+      path:"/document/create/:trip_id",
+      element: <CreateDocument />
     },
     {
       path:"/destinations/add/:destination_id",
@@ -103,9 +103,6 @@ const App = () => {
                         <Link to="/trip/new">Plan your Trip</Link>
                         <Link to="/trips">My Trips</Link>
                         <a href='/destinations' role='button'>Destinations</a>
-                        <a href='/about' role='button'>About</a>
-                        <a href='/blog' role='button'>Blogs</a>
-                        <a href='/contact' role='button'>Contact</a>
                         <div className = 'nav-icons'>
                             <img src={heart_icon}/>
                             <img src={profile_icon}/>
