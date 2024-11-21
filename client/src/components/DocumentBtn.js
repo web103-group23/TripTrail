@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import './DocumentBtn.css'
 
 const DocumentBtn = (props) =>  {

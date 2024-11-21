@@ -13,4 +13,10 @@
 
 a {
     font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    text-decoration: none;
+    font-family: inherit;
 }
