@@ -1,0 +1,22 @@
+
+.documentBtn {
+    text-align: center;
+    padding:5;
+    margin-right: 10px;
+    width: 170px;
+}
+
+.documentBtn:hover {
+    background: rgba(21, 5, 5, 0.184);
+
+}
+
+a {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    text-decoration: none;
+    font-family: inherit;
+}

@@ -3,9 +3,9 @@ import TripsController from '../controllers/trips.js'
 
 const router = express.Router()
 
-router.get('/trips', TripsController.getTrips)
+router.get('/', TripsController.getTrips)
 router.get('/:id', TripsController.getTrip)
-router.post('/trips', TripsController.createTrip)
+router.post('/', TripsController.createTrip)
 router.delete('/:id', TripsController.deleteTrip)
 router.patch('/:id', TripsController.updateTrip)
 

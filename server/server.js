@@ -1,7 +1,9 @@
+
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
 import tripRoutes from './routes/trips.js'
+import documentRoutes from './routes/documents.js'
 import pg from 'pg'
 
 const app = express();
@@ -98,23 +100,11 @@ const decodePolyline = (encoded) => {
     return points;
 };
 
-app.use('/api', tripRoutes)
+app.use('/api/trips', tripRoutes)
+app.use('/api/documents', documentRoutes)
 
-if (process.env.NODE_ENV === 'production') {
-    app.get('/*', (_, res) =>
-        res.sendFile(path.resolve('public', 'index.html'))
-    )
-}
+const PORT = process.env.PORT || 3001
 
-
-const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
-
-server.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-        console.error(`Port ${PORT} is already in use. Please use a different port.`);
-        process.exit(1);
-    }
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`)
 })

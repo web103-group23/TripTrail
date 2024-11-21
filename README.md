@@ -58,21 +58,6 @@ Users can choose from a list of destinations, such as restaurants and places, to
 
 Users can see a detailed view of their trip which includes: title, start/end date, description, transportation, estimated travel time, travel cost, destinations (title, type, location, cost), total expenses, and documents.
 
-<<<<<<< HEAD
-![tripdetails gif](gifs/wip.gif)
-
-### View & Filter Destinations
-
-Users can choose from a list of destinations, such as restaurants and places, to assign to a trip.
-
-![viewfilterdestinations gif](gifs/wip.gif)
-
-### Add Destinations to Trip
-
-Users can choose from a list of destinations to assign to a trip.
-
-=======
->>>>>>> origin/main
 [gif goes here]
 
 ### Invite Users to Trip
