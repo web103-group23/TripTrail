@@ -48,7 +48,7 @@ const EditTrip = ({data}) => {
         }
       
         fetch('/api/trips/' + id, options)
-        window.location.href = '/'
+        window.location.href = '/trips'
     }
 
     return (
@@ -123,7 +123,7 @@ const EditTrip = ({data}) => {
                 <tr>
                     <td colSpan='6' style={{ textAlign: 'center' }}>
                         <input type="submit" value="Submit" onClick={updateTrip}/>
-                        <input type='submit' value="Cancel" onClick={deleteTrip}></input>
+                        <input type='submit' value="Delete" onClick={deleteTrip}></input>
                     </td>
                 </tr>
             </table>
