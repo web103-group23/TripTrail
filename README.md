@@ -50,7 +50,7 @@ If users go to an undefined path, they encounter an error page that redirects th
 
 ### Add Destinations to Trip
 
-Users can choose from a list of destinations, such as restaurants and places, to assign to a trip.
+Users can choose from a list of destinations to assign to a trip.
 
 ![](gifs/adddestinationstotrip.gif)
 

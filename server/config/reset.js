@@ -23,11 +23,16 @@ const createTripsTable = async () => {
             id serial PRIMARY KEY,
             title varchar(100) NOT NULL,
             description varchar(500) NOT NULL,
-            img_url text NOT NULL,
-            num_days integer NOT NULL,
-            start_date date NOT NULL,
-            end_date date NOT NULL,
-            total_cost money NOT NULL
+            start_point varchar(1000) ,
+            end_point varchar(1000) ,
+            num_days integer ,
+            start_date date ,
+            end_date date ,
+            mode_of_transport varchar(50) ,
+            chosen_destination varchar(100) ,
+            time_to_spend varchar(50) ,
+            budget numeric(10, 2) ,
+            currency varchar(10)
         );
     `;
     try {
