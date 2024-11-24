@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Event = ({ id, color, price, type, onSelect, iscombo, isconvertible, isSelected }) => {
- 
+
     const [data, setData] = useState({});
     console.log(isSelected);
     useEffect(() => {

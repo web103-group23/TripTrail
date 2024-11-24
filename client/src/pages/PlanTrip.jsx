@@ -1,58 +1,99 @@
-import React, { useState } from 'react';
-import '../App.css';
-import '../css/PlanTrip.css';
-import invite_people_icon from '../assets/invite_people_icon.png';
-import add_destination from '../assets/add_destination.png';
+import React, { useState } from "react";
+import "../App.css";
+import "../css/PlanTrip.css";
+import invite_people_icon from "../assets/invite_people_icon.png";
+import add_destination from "../assets/add_destination.png";
+import Trip from "../components/Trip.jsx";
 
 const PlanTrip = () => {
     const [trip, setTrip] = useState({
         id: 0,
         title: "",
         description: "",
+        start_point: "",
+        end_point: "",
         num_days: 0,
-        from_loc: "",
-        to_loc: "",
         start_date: "",
         end_date: "",
-        total_cost: 0.0
+        mode_of_transport: "",
+        chosen_destination: "",
+        time_to_spend: "",
+        budget: 0.0,
+        currency: "",
     });
+
     const [attractions, setAttractions] = useState([]);
-    const [directionsData, setDirectionsData] = useState(null);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+
         setTrip((prev) => ({
             ...prev,
-            [name]: value,
+            [name]:
+                name === "budget"
+                    ? parseFloat(value) || 0 // Ensure budget remains a number
+                    : name === "num_days"
+                    ? parseInt(value, 10) || 0 // Ensure num_days remains an integer
+                    : value,
         }));
     };
-
-    const fetchAttractions = async () => {
-        if (!trip.from_loc || !trip.to_loc) return;
-
-        try {
-            const directionsResponse = await fetch(
-                `http://localhost:3001/api/directions?origin=${encodeURIComponent(trip.from_loc)}&destination=${encodeURIComponent(trip.to_loc)}`
-            );
-            const directionsData = await directionsResponse.json();
-            setAttractions(directionsData.places);
-        } catch (error) {
-            console.error("Error fetching attractions:", error);
-        }
-    };
-
-    const createTrip = async (event) => {
-        event.preventDefault();
+    const createTrip = async () => {
+        console.log("fs:", typeof trip.budget);
         const options = {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(trip)
+            body: JSON.stringify(trip),
         };
-
-        await fetch('/api/trips', options);
-        window.location.href = '/';
+        try {
+            const response = await fetch("/api/trips", options);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            await response.json();
+            window.location = "/";
+            if (response.ok) {
+                console.log("Trip created successfully");
+                alert("Trip created successfully!");
+                setTrip({
+                    id: 0,
+                    title: "",
+                    description: "",
+                    start_point: "",
+                    end_point: "",
+                    num_days: 0,
+                    start_date: "",
+                    end_date: "",
+                    mode_of_transport: "",
+                    chosen_destination: "",
+                    time_to_spend: "",
+                    budget: 0.0,
+                    currency: "",
+                });
+            } else {
+                console.error("Failed to create trip");
+            }
+        } catch (error) {
+            console.error("Error creating car:", error);
+            alert("Trip created successfully!");
+            setTrip({
+                id: 0,
+                title: "",
+                description: "",
+                start_point: "",
+                end_point: "",
+                num_days: 0,
+                start_date: "",
+                end_date: "",
+                mode_of_transport: "",
+                chosen_destination: "",
+                time_to_spend: "",
+                budget: 0.0,
+                currency: "",
+            });
+            setAttractions([]);
+        }
     };
 
     const resetTrip = (event) => {
@@ -61,80 +102,312 @@ const PlanTrip = () => {
             id: 0,
             title: "",
             description: "",
+            start_point: "",
+            end_point: "",
             num_days: 0,
-            from_loc: "",
-            to_loc: "",
             start_date: "",
             end_date: "",
-            total_cost: 0.0
+            mode_of_transport: "",
+            chosen_destination: "",
+            time_to_spend: "",
+            budget: 0.0,
+            currency: "",
         });
     };
 
+    const fetchAttractions = async () => {
+        if (!trip.start_point || !trip.end_point) return;
+
+        try {
+            const directionsResponse = await fetch(
+                `http://localhost:3000/api/directions?origin=${encodeURIComponent(
+                    trip.start_point
+                )}&destination=${encodeURIComponent(trip.end_point)}`
+            );
+            const directionsData = await directionsResponse.json();
+            setAttractions(directionsData.places);
+            console.log(attractions);
+        } catch (error) {
+            console.error("Error fetching attractions:", error);
+        }
+    };
+
+    const handleAttractionClick = (attraction) => {
+        setTrip((prev) => ({
+            ...prev,
+            chosen_destination: attraction,
+        }));
+    };
+
     return (
-        <div className='plan_trip'>
-            <div className='plan-trip-ribbon'>
+        <div className="plan_trip">
+            <div className="plan-trip-ribbon">
                 <div className="plan-trip-ribbon-title">
-                    <div className="title1"><h4>Plan your</h4></div>
-                    <div className='subtitle1'><h4>Trip</h4></div>
+                    <div className="title1">
+                        <h4>Plan your</h4>
+                    </div>
+                    <div className="subtitle1">
+                        <h4>Trip</h4>
+                    </div>
                 </div>
-                <div className='icons'>
-                    <img src={invite_people_icon} alt="Invite Icon" />
+                <div className="icons">
+                    <img src={invite_people_icon} />
                 </div>
             </div>
-            <table className='form-table'>
+            <table className="form-table">
                 <tbody>
                     <tr>
-                        <td><label className="form-label">Title:</label></td>
-                        <td><input type='text' name='title' placeholder='Up to 50 Characters' className='inputCustomSize1' value={trip.title} onChange={handleChange} /></td>
-                        <td><label className="form-label">Description:</label></td>
-                        <td><input type='text' name='description' placeholder='Up to 200 Characters' className='inputCustomSize2' value={trip.description} onChange={handleChange} /></td>
+                        <td>
+                            <label className="form-label">Title:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="title"
+                                placeholder="Up to 50 Characters"
+                                className="inputCustomSize1"
+                                value={trip.title}
+                                onChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">Description:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="description"
+                                placeholder="Up to 200 Characters"
+                                className="inputCustomSize2"
+                                value={trip.description}
+                                onChange={handleChange}
+                            />
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <table className='form-table1'>
+            <table className="form-table1">
                 <tbody>
                     <tr>
-                        <td><label className="form-label">Start Point:</label></td>
-                        <td><input type='text' name='from_loc' placeholder='Enter start point' value={trip.from_loc} onChange={handleChange} onBlur={fetchAttractions} className='inputCustomSize1' /></td>
-                        <td><label className="form-label">End Point:</label></td>
-                        <td><input type='text' name='to_loc' placeholder='Enter end point' value={trip.to_loc} onChange={handleChange} onBlur={fetchAttractions} className='inputCustomSize1' /></td>
-                        <td><label className="form-label">Duration:</label></td>
-                        <td><input type='number' name='num_days' placeholder='Days' className='inputCustomSize1' value={trip.num_days} onChange={handleChange} /></td>
+                        <td>
+                            <label className="form-label">Start Point:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="start_point"
+                                value={trip.start_point}
+                                onChange={handleChange}
+                                onBlur={fetchAttractions}
+                                className="inputCustomSize1"
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">End Point:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="end_point"
+                                value={trip.end_point}
+                                onChange={handleChange}
+                                onBlur={fetchAttractions}
+                                className="inputCustomSize1"
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">Duration:</label>
+                        </td>
+                        <td>
+                            <div className="duration-container">
+                                <input
+                                    type="number"
+                                    name="num_days"
+                                    className="inputCustomSize1"
+                                    value={trip.num_days}
+                                    onChange={handleChange}
+                                />
+                                <label className="form-label">days</label>
+                            </div>
+                        </td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td><label className="form-label">Start Date:</label></td>
-                        <td><input type='date' name='start_date' className='inputCustomSize1' value={trip.start_date} onChange={handleChange} /></td>
-                        <td><label className="form-label">End Date:</label></td>
-                        <td><input type='date' name='end_date' className='inputCustomSize1' value={trip.end_date} onChange={handleChange} /></td>
-                        <td><label className="form-label">Mode of Transport:</label></td>
+                        <td>
+                            <label className="form-label">Start Date:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="date"
+                                name="start_date"
+                                className="inputCustomSize1"
+                                value={trip.start_date}
+                                onChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">End Date:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="date"
+                                name="end_date"
+                                className="inputCustomSize1"
+                                value={trip.end_date}
+                                onChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">
+                                Mode of Transport:
+                            </label>
+                        </td>
                         <td>
                             <div className="radio-container">
-                                <input type="radio" id="flight" name="transport" value="Flight" onChange={handleChange} />
-                                <label className="form-label" htmlFor="flight">Flight</label>
-                                <input type="radio" id="car" name="transport" value="Car" onChange={handleChange} />
-                                <label className="form-label" htmlFor="car">Car</label>
+                                <input
+                                    type="radio"
+                                    id="flight"
+                                    name="mode_of_transport"
+                                    value="Flight"
+                                    checked={
+                                        trip.mode_of_transport === "Flight"
+                                    }
+                                    onChange={handleChange}
+                                />
+                                <label className="form-label" htmlFor="flight">
+                                    Flight
+                                </label>
+                                <input
+                                    type="radio"
+                                    id="car"
+                                    name="mode_of_transport"
+                                    value="Car"
+                                    checked={trip.mode_of_transport === "Car"}
+                                    onChange={handleChange}
+                                />
+                                <label className="form-label" htmlFor="car">
+                                    Car
+                                </label>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label className="form-label">
+                                Add Destination:
+                            </label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                className="inputCustomSize1"
+                                value="Must-See Attractions"
+                                readOnly
+                            />
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div className="attractions-container">
+                <div className="subtitle2">
+                    <h4>Attractions:</h4>
+                </div>
+                <div className="attractions-list">
+                    {attractions.map((attraction, index) => (
+                        <Trip
+                            key={index}
+                            name={attraction}
+                            onClick={() => handleAttractionClick(attraction)}
+                        />
+                    ))}
+                </div>
+            </div>
+
+            <table className="form-table1">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label className="form-label">
+                                Chosen Destination:
+                            </label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                placeholder="Enter chosen destination"
+                                className="inputCustomSize1"
+                                value={trip.chosen_destination}
+                                onChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">Time to Spend:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="time_to_spend"
+                                placeholder="HH:MM"
+                                className="inputCustomSize1"
+                                value={trip.time_to_spend}
+                                onChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <label className="form-label">Budget:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="number"
+                                name="budget"
+                                className="inputCustomSize1"
+                                value={trip.budget}
+                                onChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                className="inputCustomSize2"
+                                name="currency"
+                                value="USD"
+                                readOnly
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan="6">
+                            <div className="destination-container">
+                                <div className="icon">
+                                    <img src={add_destination} />
+                                </div>
+                                <div className="title1">
+                                    <h4>Add</h4>
+                                </div>
+                                <div className="subtitle2">
+                                    <h4>Destination</h4>
+                                </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td><label className="form-label">Chosen Destination:</label></td>
-                        <td><input type='text' placeholder='Enter chosen destination' className='inputCustomSize1' /></td>
-                        <td><label className="form-label">Time to Spend:</label></td>
-                        <td><input type='text' placeholder='HH:MM' className='inputCustomSize1' /></td>
-                        <td><label className="form-label">Budget:</label></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <select className='inputCustomSize2'>
-                                <option value='USD'>USD</option>
-                                <option value='EUR'>EUR</option>
-                                <option value='INR'>INR</option>
-                            </select>
-                            <input type="number" name="total_cost" className='inputCustomSize1' value={trip.total_cost} onChange={handleChange} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colSpan='6' style={{ textAlign: 'center' }}>
-                            <button type='submit' onClick={createTrip}>Submit</button>
-                            <button type='button' onClick={resetTrip}>Cancel</button>
+                            <div className="button-container">
+                                <button type="submit" onClick={createTrip}>
+                                    Submit
+                                </button>
+                                <button type="button" onClick={resetTrip}>
+                                    Cancel
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

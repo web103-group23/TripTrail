@@ -225,4 +225,4 @@ const CreateTrip = () => {
         );
     };
 
-    export default CreateTrip;
+export default CreateTrip;

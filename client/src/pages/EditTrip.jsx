@@ -27,7 +27,7 @@ const EditTrip = ({data}) => {
 
     const updateTrip = (event) => {
         event.preventDefault()
-      
+
         const options = {
           method: 'PATCH',
           headers: {
@@ -35,18 +35,18 @@ const EditTrip = ({data}) => {
           },
           body: JSON.stringify(trip)
         }
-      
+
         fetch('/api/trips/' + id, options)
         window.location.href = '/'
     }
 
     const deleteTrip = (event) => {
         event.preventDefault()
-      
+
         const options = {
           method: 'DELETE'
         }
-      
+
         fetch('/api/trips/' + id, options)
         window.location.href = '/trips'
     }

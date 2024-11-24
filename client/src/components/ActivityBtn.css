@@ -1,12 +1,14 @@
 
-.DestinationBtn {
+.activityBtn {
     text-align: center;
     padding:5;
     margin-right: 10px;
     width: 170px;
 }
 
-.DestinationBtn:hover {
-    cursor:default;
+.activityBtn:hover {
+    background: rgba(21, 5, 5, 0.184);
 
 }
+
+

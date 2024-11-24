@@ -1,7 +1,6 @@
-import "../App.css";
-import "./Home.css";
-
-import Main_Page from "../assets/Main_Page.jpg";
+import '../App.css';
+import '../css/Home.css';
+import Main_Page from '../assets/Main_Page.jpg';
 
 const Home = () => {
     return (
