@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
+import tripRoutes from "./routes/trips.js";
+import documentRoutes from "./routes/documents.js";
+import destinationRoutes from "./routes/destinations.js";
 
 const app = express();
 app.use(express.json());
@@ -8,6 +11,16 @@ app.use(cors());
 
 const directionsApiKey = "AIzaSyDuI3qpvVWv_azTMyGkqM82z36gJwUzopA";
 const placesApiKey = "AIzaSyDuI3qpvVWv_azTMyGkqM82z36gJwUzopA";
+
+app.get("/", (req, res) => {
+    res.status(200).send(
+        '<h1 style="text-align: center; margin-top: 50px;">TripTrail</h1>'
+    );
+});
+
+app.use("/api/trips", tripRoutes);
+app.use("/api/documents", documentRoutes);
+app.use("/api/destinations", destinationRoutes);
 
 app.get("/api/directions", async (req, res) => {
     const { origin, destination } = req.query;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './CreateTrip.css';
-import Destination from '../components/Destination.js';
+import Destination from '../components/Destination.jsx';
 import invite_people_icon from '../assets/invite_people_icon.png';
 import add_destination from '../assets/add_destination.png';
 
@@ -21,8 +21,8 @@ const CreateTrip = () => {
         budget: 0.0,
         currency: "",
     });
-    
-    
+
+
     const [attractions, setAttractions] = useState([]);
 
     const handleChange = (event) => {
@@ -70,7 +70,7 @@ const CreateTrip = () => {
             console.error('Error while creating trip:', error);
         }
     };
-    
+
     const resetTrip = (event) => {
         event.preventDefault();
         setTrip({
@@ -89,7 +89,7 @@ const CreateTrip = () => {
                     currency: "",
                 });
     }
-    
+
     const fetchAttractions = async () => {
         if (!trip.start_point || !trip.end_point) return;
 
@@ -194,7 +194,7 @@ const CreateTrip = () => {
                             <td>
                             <input type="number" name="budget" className='inputCustomSize1' value={trip.budget} onChange={handleChange} /></td>
                                 <td><input type='text' className='inputCustomSize2' name="currency" value='USD' readOnly />
-                                
+
                                 </td>
                         </tr>
                         <tr>
@@ -209,14 +209,14 @@ const CreateTrip = () => {
                         <tr>
                             <td></td>
                             <td></td>
-                            <td></td>	
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td>
                             <div className='button-container'>
                                 <button type='submit' onClick={createTrip}>Submit</button>
                                 <button type='button' onClick={resetTrip}>Cancel</button>
-                            </div> 
+                            </div>
                             </td>
                         </tr>
                     </tbody>
@@ -224,5 +224,5 @@ const CreateTrip = () => {
             </div>
         );
     };
-    
+
     export default CreateTrip;
