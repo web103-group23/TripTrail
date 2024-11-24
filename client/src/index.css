@@ -10,19 +10,20 @@ html, body{
 
 
 @font-face {
-  font-family: "Shalimar-font";   /*Can be any text*/
+  font-family: "Shalimar-font";
   src: url("./fonts/Shalimar-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Aldrich-font";   /*Can be any text*/
+  font-family: "Aldrich-font";
   src: url("./fonts/Aldrich-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
-  font-family: "InriaSans-Bold";   /*Can be any text*/
+  font-family: "InriaSans-Bold";
   src: url("./fonts/InriaSans-Bold.ttf") format("truetype");
 }
